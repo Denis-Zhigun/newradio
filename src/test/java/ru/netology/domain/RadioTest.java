@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    Radio fruit = new Radio();
+    Radio fruit = new Radio(10);
 
     @Test
     public void shouldNextStation() {
-        int currentStation = 9;
+        int currentStation = 10;
         fruit.setCurrentStation(currentStation);
         fruit.nextRadioStation();
         assertEquals(0, fruit.getCurrentStation());
@@ -25,7 +25,7 @@ class RadioTest {
 
     @Test
     public void shouldNextStation2() {
-        int currentStation = 10;
+        int currentStation = 11;
         fruit.setCurrentStation(currentStation);
         fruit.nextRadioStation();
         assertEquals(1, fruit.getCurrentStation());
@@ -36,7 +36,7 @@ class RadioTest {
         int currentStation = 0;
         fruit.setCurrentStation(currentStation);
         fruit.prevRadioStation();
-        assertEquals(9, fruit.getCurrentStation());
+        assertEquals(10, fruit.getCurrentStation());
     }
 
     @Test
@@ -44,7 +44,7 @@ class RadioTest {
         int currentStation = -1;
         fruit.setCurrentStation(currentStation);
         fruit.prevRadioStation();
-        assertEquals(9, fruit.getCurrentStation());
+        assertEquals(10, fruit.getCurrentStation());
     }
 
     @Test
@@ -70,7 +70,7 @@ class RadioTest {
         int currentStation = 2;
         fruit.setCurrentStation(currentStation);
         fruit.inputRadioStation(RadioStation);
-        assertEquals(2, fruit.getCurrentStation());
+        assertEquals(10, fruit.getCurrentStation());
     }
 
     @Test
@@ -84,49 +84,49 @@ class RadioTest {
 
     @Test
     public void shouldSoundVolumePlus() {
-        int currentVolume = 10;
+        int currentVolume = 99;
         fruit.setCurrentVolume(currentVolume);
         fruit.soundVolumePlus();
-        assertEquals(10, fruit.getCurrentVolume());
+        assertEquals(100, fruit.getCurrentVolume());
     }
 
     @Test
     public void shouldSoundVolumePlus1() {
-        int currentVolume = 5;
+        int currentVolume = 55;
         fruit.setCurrentVolume(currentVolume);
         fruit.soundVolumePlus();
-        assertEquals(6, fruit.getCurrentVolume());
+        assertEquals(56, fruit.getCurrentVolume());
     }
 
     @Test
     public void shouldSoundVolumePlus2() {
-        int currentVolume = 11;
+        int currentVolume = 0;
         fruit.setCurrentVolume(currentVolume);
         fruit.soundVolumePlus();
         assertEquals(1, fruit.getCurrentVolume());
     }
 
     @Test
-    public void shouldSoundVolumeMinus() {
-        int currentVolume = 5;
+    public void shouldSoundVolumeMinos() {
+        int currentVolume = 1;
         fruit.setCurrentVolume(currentVolume);
-        fruit.soundVolumeMinus();
-        assertEquals(4, fruit.getCurrentVolume());
-    }
-
-    @Test
-    public void shouldSoundVolumeMinus1() {
-        int currentVolume = 0;
-        fruit.setCurrentVolume(currentVolume);
-        fruit.soundVolumeMinus();
+        fruit.soundVolumeMinos();
         assertEquals(0, fruit.getCurrentVolume());
     }
 
     @Test
-    public void shouldSoundVolumeMinus2() {
+    public void shouldSoundVolumeMinos1() {
+        int currentVolume = 0;
+        fruit.setCurrentVolume(currentVolume);
+        fruit.soundVolumeMinos();
+        assertEquals(0, fruit.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldSoundVolumeMinos2() {
         int currentVolume = -1;
         fruit.setCurrentVolume(currentVolume);
-        fruit.soundVolumeMinus();
+        fruit.soundVolumeMinos();
         assertEquals(0, fruit.getCurrentVolume());
     }
 
